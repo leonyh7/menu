@@ -1,0 +1,27 @@
+@import './variable';
+@mixin apin-menu($width) {
+  width: $width;
+  height: 100%;
+  box-sizing: border-box;
+  border-right: 1px solid $menu-bg-border-color;
+  color: #fff;
+  background-color: $layout-menu-bg-color;
+  .menu-arrow {
+    border-bottom: 1px solid $menu-bg-border-color;
+  }
+  &.apin-top-menu {
+    position: relative;
+  }
+  &.apin-menu-child {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 1px);
+  }
+}
+.apin-menu {
+  @include apin-menu($layout-menu-width);
+  transition: width .3s cubic-bezier(.215,.61,.355,1);
+  &.collapsed {
+    width: $layout-menu-width-collapse;
+  }
+}
