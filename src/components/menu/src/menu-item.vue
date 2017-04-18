@@ -1,8 +1,8 @@
 <template>
   <div class="apin-menu-item">
     <i :class="'el-icon-' + icon"></i>
-    <span class="item-text">{{text}}</span>
-    <i class="el-icon-arrow-right" v-if="hasChild"></i>
+    <span class="apin-item-text">{{text}}</span>
+    <i class="el-icon-arrow-right apin-icon-right" v-if="hasChild"></i>
   </div>
 </template>
 
@@ -16,6 +16,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../../assets/style/variable';
 .apin-menu-item {
+  position: relative;
   padding: 0 $menu-item-padding;
   height: $menu-item-height;
   line-height: $menu-item-height;
@@ -25,11 +26,18 @@ export default {
     background-color: $light-dark;
   }
 }
-.item-text {
-  margin-left: 10px;
+.collapsed > .apin-menu-item {
+  & > .apin-item-text,
+  & > .apin-icon-right {
+    display: none;
+  }
 }
-.collapsed .item-text {
-  display: none;
-  margin-left: 10px;
+.apin-item-text {
+  margin-left: 15px;
+}
+.apin-icon-right {
+  position: absolute;
+  top: ($menu-item-height - $menu-item-icon-size) / 2;
+  right: 10px;
 }
 </style>

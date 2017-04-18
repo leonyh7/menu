@@ -4,7 +4,11 @@
       title
     </header>
     <main>
-      <apin-menu :menuList="menuList"></apin-menu>
+      <apin-menu :menuList="menuList" @showChild="showChild" >
+        <apin-sub-menu :subMenuList="subMenu.list" :title="subMenu.text" slot="child" v-show="subMenu.show" @showItem="showItem" @close="close('all')">
+          <apin-sub-menu :subMenuList="item.list" :title="item.text" slot="child" v-show="item.show" @close="close"></apin-sub-menu>
+        </apin-sub-menu>
+      </apin-menu>
       <section class="apin-content"></section>
     </main>
   </div>
@@ -12,6 +16,7 @@
 
 <script>
 import Menu from './components/menu'
+import SubMenu from './components/sub-menu'
 export default {
   name: 'app',
   data () {
@@ -37,11 +42,37 @@ export default {
         id: 2,
         icon: 'setting',
         text: 'menu2'
-      }]
+      }],
+      // 二级菜单
+      childText: '',
+      subMenu: {
+        show: false,
+        text: '',
+        list: []
+      },
+      // 三级菜单
+      item: {
+        show: false,
+        text: '',
+        list: []
+      }
     }
   },
   components: {
-    [Menu.name]: Menu
+    [Menu.name]: Menu,
+    [SubMenu.name]: SubMenu
+  },
+  methods: {
+    showChild (list) {
+      this.subMenu = Object.assign({}, this.subMenu, list)
+    },
+    showItem (list) {
+      this.item = Object.assign({}, this.item, list)
+    },
+    close (isAll) {
+      if (isAll) this.subMenu.show = false
+      this.item.show = false
+    }
   }
 }
 </script>

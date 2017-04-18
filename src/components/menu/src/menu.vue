@@ -5,33 +5,22 @@
       :icon="menu.icon"
       :text="menu.text" 
       :hasChild="!!menu.children&&menu.children.length>0" 
+      v-for="menu in menuList" 
       :key="menu.id" 
-      @click.native="showChild(menu)" 
-      v-for="menu in menuList">
+      @click.native="showChild(menu)">
     </apin-menu-item>
-    <apin-sub-menu :subMenuList="subMenuList" class="apin-menu-child" v-show="isShowChild">
-      <apin-menu-item
-        :icon="menu.icon"
-        :text="menu.text" 
-        :hasChild="!!menu.children&&menu.children.length>0" 
-        :key="menu.id" 
-        @click.native="showChild(menu)" 
-        v-for="menu in subMenuList">
-      </apin-menu-item>
-    </apin-sub-menu>
+    <slot name="child" v-show="isShowChild"></slot>
   </div>
 </template>
 
 <script>
 import MenuItem from './menu-item'
-import SubMenu from './sub-menu'
 export default {
   name: 'ApinMenu',
   data () {
     return {
-      collapsed: false,
-      isShowChild: false,
-      subMenuList: []
+      // 一级菜单伸缩
+      collapsed: false
     }
   },
   props: {
@@ -41,8 +30,7 @@ export default {
     }
   },
   components: {
-    [MenuItem.name]: MenuItem,
-    [SubMenu.name]: SubMenu
+    [MenuItem.name]: MenuItem
   },
   methods: {
     collapse () { // 伸缩父菜单
@@ -50,8 +38,11 @@ export default {
     },
     showChild (menu) { // 显示子菜单
       if (menu.children) {
-        this.subMenuList = menu.children
-        this.isShowChild = true
+        this.$emit('showChild', {
+          show: true,
+          text: menu.text,
+          list: menu.children
+        })
       }
     }
   }
