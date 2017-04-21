@@ -1,8 +1,8 @@
 <template>
   <div class="apin-menu-item">
-    <i :class="'el-icon-' + icon"></i>
+    <i :class="'icon-' + icon"></i>
     <span class="apin-item-text">{{text}}</span>
-    <i class="el-icon-arrow-right apin-icon-right" v-if="hasChild"></i>
+    <i class="icon-more" v-if="hasChild"></i>
   </div>
 </template>
 
@@ -28,14 +28,14 @@ export default {
 }
 .collapsed > .apin-menu-item {
   & > .apin-item-text,
-  & > .apin-icon-right {
+  & > .icon-more {
     display: none;
   }
 }
 .apin-item-text {
   margin-left: 15px;
 }
-.apin-icon-right {
+.icon-more {
   position: absolute;
   top: ($menu-item-height - $menu-item-icon-size) / 2;
   right: 10px;

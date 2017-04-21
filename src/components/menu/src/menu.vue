@@ -1,6 +1,6 @@
 <template>
   <div class="apin-menu apin-top-menu" :class="{collapsed: collapsed}">
-    <apin-menu-item icon="menu" class="menu-arrow" @click.native="collapse" :hasChild="false"></apin-menu-item>
+    <apin-menu-item icon="category" class="menu-arrow" @click.native="collapse" :hasChild="false"></apin-menu-item>
     <apin-menu-item
       :icon="menu.icon"
       :text="menu.text" 

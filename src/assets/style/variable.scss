@@ -2,25 +2,26 @@
 $dark: #202428;
 $light-dark: #3d4247;
 $light-grey: #282d32;
+$grey: #454545;
 $light: #f1f1f8;
 /* size */
 $normal-size: 14px;
 $middle-size: 16px;
-/* layout */
-// head
-$layout-head-color: white;
-$layout-head-bg-color: $dark;
-$layout-head-height: 40px;
-// menu
-$layout-menu-width: 225px;
-$layout-menu-width-collapse: 60px;
-$layout-menu-color: white;
-$layout-menu-bg-color: $light-grey;
+// layout
+$head-color: white;
+$head-bg-color: $dark;
+$head-height: 40px;
+$head-search-text-color: #fff;
+$head-search-text-height: 28px;
 // content
-$layout-content-bg: $light;
-/* menu */
+$content-bg: $light;
+// menu
+$menu-width: 225px;
+$menu-width-collapse: 60px;
+$menu-color: white;
+$menu-bg-color: $light-grey;
 $menu-bg-border-color: $light-dark;
-/* menu-item */
+// menu-item
 $menu-item-icon-size: $normal-size;
 $menu-item-height: 40px;
 $menu-item-padding: 20px;

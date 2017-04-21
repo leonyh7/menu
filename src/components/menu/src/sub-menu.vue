@@ -2,7 +2,7 @@
   <div class="apin-menu apin-menu-child">
     <div class="sub-menu-title">
       <p>{{title}}</p>
-      <i class="el-icon-close apin-icon-close" @click="close"></i>
+      <i class="icon-close" @click="close"></i>
     </div>
     <apin-menu-item
       :icon="menu.icon"

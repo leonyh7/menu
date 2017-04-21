@@ -5,7 +5,7 @@
   box-sizing: border-box;
   border-right: 1px solid $menu-bg-border-color;
   color: #fff;
-  background-color: $layout-menu-bg-color;
+  background-color: $menu-bg-color;
   .menu-arrow {
     border-bottom: 1px solid $menu-bg-border-color;
   }
@@ -17,22 +17,22 @@
     top: 0;
     left: calc(100% + 1px);
   }
-  [class^=el-icon-] {
+  [class^=apin-icon-] {
     font-size: $menu-item-icon-size;
   }
 }
 .apin-menu {
-  @include apin-menu($layout-menu-width);
+  @include apin-menu($menu-width);
   transition: width .3s cubic-bezier(.215,.61,.355,1);
   &.collapsed {
-    width: $layout-menu-width-collapse;
+    width: $menu-width-collapse;
   }
 }
 .sub-menu-title {
   position: relative;
   padding: 0 $menu-item-padding;
   line-height: $menu-item-height;
-  .apin-icon-close {
+  .icon-close {
     position: absolute;
     top: ($menu-item-height - $menu-item-icon-size) / 2;
     right: 15px;
