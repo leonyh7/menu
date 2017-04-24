@@ -6,62 +6,66 @@
         <i class="icon-search"></i>
         <input class="apin-text" type="text" placeholder="搜索资源" v-model="search" @focus="getResult" @blur="hideResult">
         <i class="icon-close" @click="clear"></i>
-        <ul class="apin-sub-menu apin-search-result" v-show="searchShow">
-            <li>result1</li>
-            <li>result2</li>
-            <li>result3</li>
-            <li>result4</li>
-            <li>result5</li>
-        </ul>
+        <div class="apin-sub-menu apin-search-result" v-show="searchShow">
+            <p>result1</p>
+            <p>result2</p>
+            <p>result3</p>
+            <p>result4</p>
+            <p>result5</p>
+        </div>
     </div>
     <apin-dropdown class="apin-notice">
       <apin-dropdown-menu>
         <i class="icon-notice" title="通知"></i>
       </apin-dropdown-menu>
       <apin-dropdown-list class="apin-sub-menu apin-notice-result">
-        <ul>
-          <li>result1</li>
-          <li>result2</li>
-          <li>result3</li>
-          <li>result4</li>
-          <li>result5</li>
-        </ul>
+        <p>result1</p>
+        <p>result2</p>
+        <p>result3</p>
+        <p>result4</p>
+        <p>result5</p>
       </apin-dropdown-list>
     </apin-dropdown>
-    <div class="apin-setting">
-      <i class="icon-shezhi" title="设置"></i>
-      <!--<ul class="apin-sub-menu apin-setting-detail">
-        <li>result1</li>
-        <li>result2</li>
-        <li>result3</li>
-        <li>result4</li>
-        <li>result5</li>
-      </ul>-->
-    </div>
-    <div class="apin-help">
-      <i class="icon-bangzhu" title="帮助"></i>
-      <!--<ul class="apin-sub-menu apin-help-detail">
-        <li>result1</li>
-        <li>result2</li>
-        <li>result3</li>
-        <li>result4</li>
-        <li>result5</li>
-      </ul>-->
-    </div>
-    <div class="apin-user">
-      <div class="apin-user-info">
-        <div class="account">eric6p@qebobo.partner.onmschina.cn</div>
-        <div class="name">chun.zhang</div>
-      </div>
-      <i class="icon-yonghu"></i>
-      <!--<ul class="apin-sub-menu apin-user-option">
-        <li>result1</li>
-        <li>result2</li>
-        <li>result3</li>
-        <li>result4</li>
-        <li>result5</li>
-      </ul>-->
-    </div>
+    <apin-dropdown class="apin-setting">
+      <apin-dropdown-menu>
+        <i class="icon-shezhi" title="设置"></i>
+      </apin-dropdown-menu>
+      <apin-dropdown-list class="apin-sub-menu apin-setting-detail">
+        <p>result1</p>
+        <p>result2</p>
+        <p>result3</p>
+        <p>result4</p>
+        <p>result5</p>
+      </apin-dropdown-list>
+    </apin-dropdown>
+    <apin-dropdown class="apin-help">
+      <apin-dropdown-menu>
+        <i class="icon-bangzhu" title="帮助"></i>
+      </apin-dropdown-menu>
+      <apin-dropdown-list class="apin-sub-menu apin-help-detail">
+        <p>result1</p>
+        <p>result2</p>
+        <p>result3</p>
+        <p>result4</p>
+        <p>result5</p>
+      </apin-dropdown-list>
+    </apin-dropdown>
+    <apin-dropdown class="apin-user">
+      <apin-dropdown-menu class="apin-user-info">
+        <div class="apin-user-content">
+          <div class="account">eric6p@qebobo.partner.onmschina.cn</div>
+          <div class="name">chun.zhang</div>
+        </div>
+        <i class="icon-yonghu"></i>
+      </apin-dropdown-menu>
+      <apin-dropdown-list class="apin-sub-menu apin-user-option">
+        <p>result1</p>
+        <p>result2</p>
+        <p>result3</p>
+        <p>result4</p>
+        <p>result5</p>
+      </apin-dropdown-list>
+    </apin-dropdown>
   </header>
 </template>
 
@@ -113,10 +117,12 @@ header {
   flex: none;
   height: $head-height;
   line-height: $head-height;
+  padding: 0 20px;
   color: $head-color;
   background-color: $head-bg-color;
   .apin-title {
     font-size: $middle-size;
+    margin-right: 15px;
   }
   .apin-breadcrumb {
     flex: auto;
@@ -124,6 +130,7 @@ header {
 
   .apin-search {
     @extend %top-menu;
+    margin-right: 15px;
     .apin-text {
         height: $head-search-text-height;
         color: $head-search-text-color;
@@ -136,33 +143,36 @@ header {
         right: 10px;
         transform: translateY(-50%);
     }
-    .apin-search-result {
-        
-    }
   }
   // 通知
   .apin-notice {
     @extend %top-menu;
+    padding: 0 15px;
   }
   // 设置
   .apin-setting {
     @extend %top-menu;
+    padding: 0 15px;
   }
   // 帮助
   .apin-help  {
     @extend %top-menu;
+    padding: 0 15px;
   }
   // 用户
   .apin-user {
     @extend %top-menu;
-    display: flex;
     .apin-user-info {
+      display: flex;
       .account {
         font-size: 14px;
         line-height: 24px;
       }
       .name {
         line-height: 16px;
+      }
+      .icon-yonghu {
+        padding: 11px 11px 0; 
       }
     }
   }
