@@ -1,18 +1,24 @@
-/* color */
+// color
 $dark: #202428;
 $light-dark: #3d4247;
+$light-dark2: #3b3b3b;
 $light-grey: #282d32;
 $grey: #454545;
 $light: #f1f1f8;
-/* size */
+// size
 $normal-size: 14px;
 $middle-size: 16px;
+$large-size: 20px;
 // layout
 $head-color: white;
 $head-bg-color: $dark;
 $head-height: 40px;
 $head-search-text-color: #fff;
 $head-search-text-height: 28px;
+//header
+$search-width: 400px;
+$notice-width: 355px;
+$head-hover-color: $light-dark2;
 // content
 $content-bg: $light;
 // menu

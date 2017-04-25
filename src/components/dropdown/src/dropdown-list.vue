@@ -23,6 +23,9 @@ export default {
   created () {
     this.$on('collapse', () => {
       this.collapse()
+    }),
+    this.$on('hide', () => {
+      this.collapsed = false
     })
   }
 }
