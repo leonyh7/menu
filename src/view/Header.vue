@@ -31,11 +31,12 @@
         <i class="icon-shezhi" title="设置"></i>
       </apin-dropdown-menu>
       <apin-dropdown-list class="apin-sub-menu apin-setting-detail">
-        <p>result1</p>
-        <p>result2</p>
-        <p>result3</p>
-        <p>result4</p>
-        <p>result5</p>
+        <el-slider v-model="value3" :show-tooltip="false"></el-slider>
+        <el-switch
+          v-model="value2"
+          on-color="#13ce66"
+          off-color="#ff4949">
+        </el-switch>
       </apin-dropdown-list>
     </apin-dropdown>
     <apin-dropdown class="apin-help">
@@ -73,12 +74,15 @@
 import Dropdown from '../components/dropdown'
 import DropdownMenu from '../components/dropdown-menu'
 import DropdownList from '../components/dropdown-list'
+// import Slider from '../components/slider'
+import Switch from '../components/switch'
 export default {
   name: 'ApinHeader',
   data () {
     return {
       search: '',
-      searchShow: false
+      searchShow: false,
+      value2: true
     }
   },
   methods: {
@@ -96,7 +100,9 @@ export default {
   components: {
     [Dropdown.name]: Dropdown,
     [DropdownMenu.name]: DropdownMenu,
-    [DropdownList.name]: DropdownList
+    [DropdownList.name]: DropdownList,
+    // [Slider.name]: Slider,
+    [Switch.name]: Switch
   }
 }
 </script>
