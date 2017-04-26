@@ -17,13 +17,13 @@ export default {
 @import '../../../assets/style/variable';
 .apin-menu-item {
   position: relative;
-  padding: 0 $menu-item-padding;
-  height: $menu-item-height;
-  line-height: $menu-item-height;
+  padding: 0 20px;
+  height: 40px;
+  line-height: 40px;
   white-space: nowrap;
   cursor: pointer;
   &:hover {
-    background-color: $light-dark;
+    background-color: #3d4247;
   }
 }
 .collapsed > .apin-menu-item {
@@ -37,7 +37,7 @@ export default {
 }
 .icon-more {
   position: absolute;
-  top: ($menu-item-height - $menu-item-icon-size) / 2;
+  top: (40px - 14px) / 2;
   right: 10px;
 }
 </style>

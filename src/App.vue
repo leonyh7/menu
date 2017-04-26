@@ -45,24 +45,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-@import './assets/style/variable';
-#app {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-main {
-    display: flex;
-    flex: 1 1 0;
-    section {
-        height: 100%;
-    }
-    .apin-content {
-        flex: 1;
-        width: calc(100% - $menu-width);
-        background-color: $content-bg;
-    }
-}
-</style>

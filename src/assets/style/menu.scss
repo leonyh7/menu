@@ -18,23 +18,23 @@
     left: calc(100% + 1px);
   }
   [class^=apin-icon-] {
-    font-size: $menu-item-icon-size;
+    font-size: 14px;
   }
 }
 .apin-menu {
-  @include apin-menu($menu-width);
+  @include apin-menu(225px);
   transition: width .3s cubic-bezier(.215,.61,.355,1);
   &.collapsed {
-    width: $menu-width-collapse;
+    width: 60px;
   }
 }
 .sub-menu-title {
   position: relative;
-  padding: 0 $menu-item-padding;
-  line-height: $menu-item-height;
+  padding: 0 20px;
+  line-height: 40px;
   .icon-close {
     position: absolute;
-    top: ($menu-item-height - $menu-item-icon-size) / 2;
+    top: (40px - 14px) / 2;
     right: 15px;
     cursor: pointer;
   }

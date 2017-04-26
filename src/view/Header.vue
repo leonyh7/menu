@@ -120,6 +120,8 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/style/variable';
+$head-height: 40px;
+$head-search-text-height: 28px;
 %top-menu {
   position: relative;
   cursor: pointer;
@@ -127,8 +129,9 @@ export default {
     position: absolute;
     top: $head-height;
     right: 0;
-    background-color: $grey;
+    background-color: #454545;
     font-size: 14px;
+    z-index: 2;
     .item {
       white-space: nowrap;
       &:hover {
@@ -155,7 +158,7 @@ header {
   flex: none;
   height: $head-height;
   line-height: $head-height;
-  padding-left: 20px;
+  padding: 0 10px;
   color: $head-color;
   background-color: $head-bg-color;
   font-size: $large-size;
@@ -173,13 +176,15 @@ header {
   }
   .apin-breadcrumb {
     flex: auto;
+    font-size: $middle-size;
   }
 
   .apin-search {
     @extend %top-menu;
     position: relative;
-    width: $search-width;
+    width: 400px;
     line-height: 34px;
+    margin-right: 10px;
     .icon-search,
     .icon-close {
       position: absolute;
@@ -196,7 +201,7 @@ header {
       height: $head-search-text-height;
       color: $head-search-text-color;
       padding: 0 30px;
-      background-color: $grey;
+      background-color: #454545;
       border: none;
       flex: auto;
       box-sizing: border-box;
@@ -210,7 +215,7 @@ header {
     @extend %head-icon;
     .apin-notice-result {
       @extend %shadow;
-      width: $notice-width;
+      width: 355px;
     }
     .no-data {
       text-align: center;
@@ -229,13 +234,14 @@ header {
     right: 0;
     display: flex;
     flex-direction: column;
-    background-color: $grey;
+    background-color: #454545;
     font-size: 14px;
     line-height: 1.2;
     width: 340px;
     height: calc(100% - #{$head-height});
     padding: 0 25px 25px;
     box-sizing: border-box;
+    z-index: 0;
     .icon-close {
       font-size: 16px;
       position: absolute;
@@ -290,10 +296,10 @@ header {
         text-overflow: ellipsis;
       }
       .account {
-        line-height: 24px;
+        line-height: 20px;
       }
       .name {
-        line-height: 16px;
+        line-height: 20px;
       }
       .icon-yonghu {
         font-size: 28px;
