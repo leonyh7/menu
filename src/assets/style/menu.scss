@@ -1,10 +1,9 @@
-@import './variable';
 @mixin apin-menu($width) {
   width: $width;
   height: 100%;
   box-sizing: border-box;
   border-right: 1px solid $menu-bg-border-color;
-  color: #fff;
+  color: $menu-color;
   background-color: $menu-bg-color;
   .menu-arrow {
     border-bottom: 1px solid $menu-bg-border-color;

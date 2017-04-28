@@ -1,10 +1,11 @@
 body {
   margin: 0;
-  font-size: $normal-size;
+  font-size: 16px;
 }
 
 html,
-body {
+body,
+#app {
   height: 100%;
 }
 
@@ -29,4 +30,10 @@ textarea {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }

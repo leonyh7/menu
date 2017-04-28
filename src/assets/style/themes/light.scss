@@ -1,0 +1,23 @@
+// layout
+$head-color: white;
+$head-bg-color: #f0f;
+$head-search-text-color: white;
+//header
+$head-bg: #ff0;
+$head-hover-color: #ff9;
+$head-icon-hover-bg: #ff8;
+$head-icon-border-right-color: rgba(128,128,128,.4);
+$head-shadow: rgba(0, 0, 0, .3);
+$head-setting-title-border: #7a7a7a;
+$head-setting-exit-color: #e81123;
+// content
+$content-bg: #ff8;
+// menu
+$menu-color: white;
+$menu-bg-color: #ff4;
+$menu-bg-border-color: #ff7;
+// button
+$button-success-bg: #00bcf2;
+$button-success-color: #fff;
+
+@import '../theme';

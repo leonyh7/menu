@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="apin-title">title</div>
+    <div class="apin-title">logo</div>
     <div class="apin-breadcrumb">menu1>menu2</div>
     <div class="apin-search">
       <i class="icon-search"></i>
@@ -33,8 +33,9 @@
         <h6 class="apin-setting-item">
           设置1
         </h6>
-        <el-switch v-model="value2" on-color="#00bcf2" off-color="#3284ae">
-        </el-switch>
+        <div class="apin-setting-color">
+          <div class="apin-color-option" v-for="(theme, name) in colors" :style="{backgroundColor: theme,width:'30px',height:'30px'}" @click="changeTheme(name)"></div>
+        </div>
       </div>
       <div class="apin-setting-option">
         <button class="btn btn-success">确认</button>
@@ -74,19 +75,33 @@
 </template>
 
 <script>
+import dark from '!raw-loader!../../dist/themes/theme-dark.css'
+import light from '!raw-loader!../../dist/themes/theme-light.css'
 import Dropdown from '../components/dropdown'
 import DropdownMenu from '../components/dropdown-menu'
 import DropdownList from '../components/dropdown-list'
-import Switch from '../components/switch'
 export default {
   name: 'ApinHeader',
   data() {
     return {
+      theme: 'dark',
+      themes: {
+        dark,
+        light
+      },
+      colors: {
+        dark: '#202428',
+        light: '#eee'
+      },
       search: '',
       searchShow: false,
       settingShow: false,
-      value2: true,
       notice: []
+    }
+  },
+  computed: {
+    themeColor() {
+      return Object.keys(this.themes)
     }
   },
   methods: {
@@ -106,218 +121,31 @@ export default {
     },
     hideSetting () {
       this.settingShow = false
+    },
+    changeTheme (theme) { // 改变主题
+      this.theme = theme
+      const styleEl = this.getThemeStyle()
+      styleEl.innerHTML = this.themes[theme] || ''
+    },
+    getThemeStyle () { // 如果没有style则设置，如果有直接返回
+      const themeId = 'theme'
+      let styleEl = document.getElementById(themeId)
+      if (styleEl) return styleEl
+      styleEl = document.createElement('style')
+      styleEl.id = themeId
+      document.body.appendChild(styleEl)
+      return styleEl
     }
   },
   components: {
     [Dropdown.name]: Dropdown,
     [DropdownMenu.name]: DropdownMenu,
-    [DropdownList.name]: DropdownList,
-    // [Slider.name]: Slider,
-    [Switch.name]: Switch
+    [DropdownList.name]: DropdownList
+  },
+  created () {
+    this.changeTheme('dark')
   }
 }
 </script>
 
-<style lang="scss" scoped>
-@import '../assets/style/variable';
-$head-height: 40px;
-$head-search-text-height: 28px;
-%top-menu {
-  position: relative;
-  cursor: pointer;
-  .apin-sub-menu {
-    position: absolute;
-    top: $head-height;
-    right: 0;
-    background-color: #454545;
-    font-size: 14px;
-    z-index: 2;
-    .item {
-      white-space: nowrap;
-      &:hover {
-        background-color: $head-hover-color;
-      }
-    }
-  }
-}
-%head-icon {
-  display: block;
-  width: $head-height;
-  text-align: center;
-  border-right: 1px solid rgba(128,128,128,.4);
-  &:hover {
-    background-color: #383838;
-  }
-}
-%shadow {
-  box-shadow: 0 5px 15px 2px rgba(0, 0, 0, .3);
-}
 
-header {
-  display: flex;
-  flex: none;
-  height: $head-height;
-  line-height: $head-height;
-  padding: 0 10px;
-  color: $head-color;
-  background-color: $head-bg-color;
-  font-size: $large-size;
-  .item {
-    height: 36px;
-    line-height: 36px;
-    padding: 0 20px;
-    &:hover {
-      background-color: $head-hover-color;
-    }
-  }
-  .apin-title {
-    margin-right: 15px;
-    color: #00bcf2;
-  }
-  .apin-breadcrumb {
-    flex: auto;
-    font-size: $middle-size;
-  }
-
-  .apin-search {
-    @extend %top-menu;
-    position: relative;
-    width: 400px;
-    line-height: 34px;
-    margin-right: 10px;
-    .icon-search,
-    .icon-close {
-      position: absolute;
-      top: 10px;
-    }
-    .icon-search {
-      left: 5px;
-    }
-    .icon-close {
-      right: 5px;
-    }
-    .apin-text {
-      width: inherit;
-      height: $head-search-text-height;
-      color: $head-search-text-color;
-      padding: 0 30px;
-      background-color: #454545;
-      border: none;
-      flex: auto;
-      box-sizing: border-box;
-    }
-    .apin-search-result {
-      width: inherit;
-    }
-  } // 通知
-  .apin-notice {
-    @extend %top-menu;
-    @extend %head-icon;
-    .apin-notice-result {
-      @extend %shadow;
-      width: 355px;
-    }
-    .no-data {
-      text-align: center;
-      width: 100%;
-      height: 130px;
-      line-height: 130px;
-    }
-  } // 设置
-  .apin-setting {
-    @extend %head-icon;
-    cursor: pointer;
-  }
-  .apin-setting-detail {
-    position: absolute;
-    top: $head-height;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    background-color: #454545;
-    font-size: 14px;
-    line-height: 1.2;
-    width: 340px;
-    height: calc(100% - #{$head-height});
-    padding: 0 25px 25px;
-    box-sizing: border-box;
-    z-index: 0;
-    .icon-close {
-      font-size: 16px;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      cursor: pointer;
-    }
-  }
-  .apin-setting-title {
-    font-weight: normal;
-    font-size: $large-size;
-    height: 40px;
-    line-height: 40px;
-    border-bottom: 1px solid #7a7a7a;
-  }
-  .apin-setting-content {
-    flex: 1;
-    overflow-y: auto; 
-  }
-  .apin-setting-item {
-    font-weight: normal;
-    margin: 10px 0;
-    font-size: $middle-size;
-  }
-  .apin-setting-option {
-    height: 30px;
-  }
-  // 帮助
-  .apin-help {
-    @extend %top-menu;
-    @extend %head-icon;
-    .apin-help-detail {
-      @extend %shadow;
-    }
-  } // 用户
-  .apin-user {
-    @extend %top-menu;
-    .apin-user-info {
-      display: flex;
-      align-items: center;
-      padding-left: 10px; 
-      .apin-user-content {
-        max-width: 135px;
-        font-size: 14px;
-        text-align: right;
-      }
-      .account,
-      .name {
-        width: inherit;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-      .account {
-        line-height: 20px;
-      }
-      .name {
-        line-height: 20px;
-      }
-      .icon-yonghu {
-        font-size: 28px;
-        margin-left: 10px;
-      }
-    }
-    .apin-user-option {
-      @extend %shadow;
-      width: 220px;
-      .item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .icon-exit {
-          color: #e81123;
-        }
-      }
-    }
-  }
-}
-</style>

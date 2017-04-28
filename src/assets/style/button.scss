@@ -5,9 +5,9 @@
     padding: 5px 15px;
 }
 .btn-success {
-    background-color: #00bcf2;
-    border-color: #00bcf2;
-    color: #fff;
+    background-color: $button-success-bg;
+    border-color: $button-success-bg;
+    color: $button-success-color;
 }
 .btn-default {
     background-color: #fff;
